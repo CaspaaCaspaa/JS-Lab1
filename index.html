@@ -4,43 +4,144 @@
     <title>JS Lab</title>
     <style>
         body {
-            margin: 0;
+            margin: 1;
             padding: 0;
             font-family: Arial, serif;
         }
 
         h1 {
-            color: #0B3954;
+            color: #0B6954;
         }
+		.button {
+			border: none;
+			color: white;
+			padding: 16px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			transition-duration: 0.4s;
+			cursor: pointer;
+		}
+
+		.button1 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #4CAF50;
+		}
+
+		.button1:hover {
+			background-color: #4CAF50;
+			color: white;
+		}
+
+		.button2 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #008CBA;
+		}
+
+		.button2:hover {
+			background-color: #008CBA;
+			color: white;
+		}
+		.button3 {
+			background-color: white; 
+			color: black; 
+			border: 2px solid #003CBA;
+		}
+
+		.button3:hover {
+			background-color: #003CBA;
+			color: white;
+		}
+		table, th, td {
+			border: 1px solid black;
+			padding: 10px;
+			color: #003CBA;
+		}
+		.hidden{
+			display: none;
+		}
 		
     </style>
 </head>
 <body>
 <div id="app">
-    <h1 id="main-header">Moja aplikacja</h1>
+    <h1 id="main-header">Refleksomierzacz</h1>
     <p>To będzie gra. A oto co muszę zrobić:</p>
-    <ol>
-        <li class="boring">Nauczyć się HTML</li>
-        <li class="boring">Nauczyć się CSS</li>
-        <li>Nauczyć się JS</li>
-        <li id="super-important">Zaimplementować</li>
+    <!-- <ol> -->
+        <!-- <li class="boring">Nauczyć się HTML</li> -->
+        <!-- <li class="boring">Nauczyć się CSS</li> -->
+        <!-- <li>Nauczyć się JS</li> -->
+        <!-- <li id="super-important">Zaimplementować</li> -->
 
-    </ol>
+    <!-- </ol> -->
 
-<input type="text" id="myTextField">
-<input type="checkbox" id="myCheckbox">
-<button type="button" onclick="readValues()">Odczytaj wartości</button>
+<!-- <input type="text" id="myTextField"> -->
+
+<button type="button" class="button button3" onclick="clickCounter()" ">Kliknij Mnie</button>
+
+<table style="float:right">
+  <caption >Statystyki</caption>
+
+  <tr>
+    <th>Min</th>
+    <th>Max</th>
+    <th>Average</th>    
+  </tr>
+  <tr>
+    <td>xxx</td>
+    <td>xxx</td>    
+    <td>xxx</td>
+  </tr>
+</table>
+<p></p>
+<button type="button" class="button button1" onclick="toggler()" id="Start">Start</button>
+<button type="button" class="button button2" onclick="invToggler()" id="Stop" style="display: none;">Stop</button>
+
+<!-- <button type="button" class="button button2" onclick="readValues()">Stop</button> -->
+
 
 </div>
 <script>
-	function removeBoringStuff() {
-	document.querySelectorAll("#app .boring").forEach((e) => e.remove());}
+
+	let buttonHome = document.querySelector(".button-home");
+	let CountButtonHomeClicks = 0;
 	
-	function readValues() {
-	const isChecked = document.getElementById('myCheckbox').checked
+	function clickCounter() {
+		CountButtonHomeClicks += 1;
+		console.log(CountButtonHomeClicks);
+	}
+
+	buttonHome.addEventListener("click",clickCounter() );
+
+	function toggler() {
+	const x = document.getElementById('Start');
+	const y = document.getElementById('Stop');
+	x.style.display = "none";
+	y.style.display = "";
+	}
+	
+	function invToggler() {
+	const x = document.getElementById('Start');
+	const y = document.getElementById('Stop');
+	x.style.display = "";
+	y.style.display = "none";
+	}
+	
+	<!-- function removeBoringStuff() { -->
+	<!-- document.querySelectorAll("#app .boring").forEach((e) => e.remove());} -->
+	
+	function gameStatus() {
+	const isChecked = document.getElementById('StartStop').checked
 	if (isChecked)
 		value =  document.getElementById('myTextField').value
-		alert(value)}
+		
+		alert(value)
+		
+		}
 	
 
 </script>
